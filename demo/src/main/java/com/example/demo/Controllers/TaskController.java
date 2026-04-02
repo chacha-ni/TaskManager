@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+// import org.springframework.web.bind.annotation.PathVariable;
 
 
 
@@ -42,12 +42,12 @@ public class TaskController {
         return taskService.getAllTasks();
     }
     @GetMapping("/findById")
-    public Optional<Task> findTaskById(@RequestParam Long id) {
+    public Optional<Task> findTaskById(@RequestParam String id) {
         
         return taskService.findTaskById(id);
     }
    @DeleteMapping("/delete")
-    public String deleteTask(@RequestParam Long id) {
+    public String deleteTask(@RequestParam String id) {
          Optional<Task> task = taskService.findTaskById(id);
         if (task == null) {
             return "Task not found with ID: " + id;
@@ -56,7 +56,7 @@ public class TaskController {
         return "Task deleted successfully with ID: " + id;
     }
     @PutMapping("/markCompleted")
-     public void markTaskAsCompleted(@RequestParam Long id) {
+     public void markTaskAsCompleted(@RequestParam String id) {
         Optional<Task> task = taskService.findTaskById(id);
         if (task == null) {
             throw new IllegalArgumentException("Task not found with ID: " + id);
