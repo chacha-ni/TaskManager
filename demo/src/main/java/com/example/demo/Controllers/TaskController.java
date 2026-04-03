@@ -55,13 +55,13 @@ public class TaskController {
         taskService.deleteTask(id);
         return "Task deleted successfully with ID: " + id;
     }
-    @PutMapping("/markCompleted")
-     public void markTaskAsCompleted(@RequestParam String id) {
-        Optional<Task> task = taskService.findTaskById(id);
-        if (task == null) {
-            throw new IllegalArgumentException("Task not found with ID: " + id);
-        }
-        taskService.markTaskAsCompleted(id);
-    }
+    // @PutMapping("/markCompleted")
+    //  public void markTaskAsCompleted(@RequestParam String id) {
+    //     Optional<Task> task = taskService.findTaskById(id);
+    //     if (task == null) {
+    //         throw new IllegalArgumentException("Task not found with ID: " + id);
+    //     }
+    //     taskService.markTaskAsCompleted(id);
+    // }
     
 }
